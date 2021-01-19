@@ -33,7 +33,7 @@ target_link_directories(makibusqt PUBLIC ${IBUSQT_LIBRARY_DIRS})
 target_link_libraries(makibusqt ${IBUSQT_LIBRARIES} Qt5::Core Qt5::DBus Qt5::Xml Qt5::Gui)
 
 # Apple frameworks
-target_link_libraries(makibusqt "-framework AppKit")
+target_link_libraries(makibusqt "-framework AppKit" "-framework InputMethodKit" "-framework Cocoa")
 # Apple app package
 set_target_properties(makibusqt PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist)
 set_target_properties(makibusqt PROPERTIES

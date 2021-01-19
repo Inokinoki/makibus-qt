@@ -24,6 +24,7 @@ pkg_check_modules(IBUSQT ibusqt REQUIRED)
 
 set(makibus_SRCS
     main.mm
+    MakibusController.mm
 )
 
 add_executable(makibusqt ${makibus_SRCS})

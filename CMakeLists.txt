@@ -10,6 +10,7 @@ project(makibus-qt VERSION ${MAKIBUS_VERSION})
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
+find_package(Qt5 5.4 REQUIRED COMPONENTS DBus Gui Xml)
 find_package(PkgConfig REQUIRED)
 
 include(KDEInstallDirs)
@@ -29,7 +30,7 @@ add_executable(makibusqt ${makibus_SRCS})
 
 target_include_directories(makibusqt PUBLIC ${IBUSQT_INCLUDE_DIRS})
 target_link_directories(makibusqt PUBLIC ${IBUSQT_LIBRARY_DIRS})
-target_link_libraries(makibusqt ${IBUSQT_LIBRARIES})
+target_link_libraries(makibusqt ${IBUSQT_LIBRARIES} Qt5::Core Qt5::DBus Qt5::Xml Qt5::Gui)
 
 # Apple frameworks
 target_link_libraries(makibusqt "-framework AppKit")

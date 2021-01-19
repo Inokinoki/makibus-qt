@@ -32,10 +32,10 @@
     <string>${MACOSX_BUNDLE_COPYRIGHT}</string>
 
     <key>InputMethodConnectionName</key>
-	<string>Makibus_Connection</string>
-	<key>InputMethodServerControllerClass</key>
-	<string>MakibusController</string>
-	<key>InputMethodServerDelegateClass</key>
-	<string>MakibusController</string>
+    <string>Makibus_Connection</string>
+    <key>InputMethodServerControllerClass</key>
+    <string>MakibusController</string>
+    <key>InputMethodServerDelegateClass</key>
+    <string>MakibusController</string>
 </dict>
 </plist>

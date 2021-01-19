@@ -10,16 +10,16 @@ project(makibus-qt VERSION ${MAKIBUS_VERSION})
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
+find_package(PkgConfig REQUIRED)
+
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMSetupVersion)
 include(FeatureSummary)
 
-# FIXME: find ibus-qt lib
-find_library(LIBIBUSQT ibus-qt)
-# message(${LIBIBUSQT})
-# FIXME: find ibus-qt headers
+# find ibusqt lib and headers
+pkg_check_modules(IBUSQT ibusqt REQUIRED)
 
 set(makibus_SRCS
     main.mm
@@ -27,7 +27,9 @@ set(makibus_SRCS
 
 add_executable(makibusqt ${makibus_SRCS})
 
-target_link_libraries(makibusqt ${LIBIBUSQT})
+target_include_directories(makibusqt PUBLIC ${IBUSQT_INCLUDE_DIRS})
+target_link_directories(makibusqt PUBLIC ${IBUSQT_LIBRARY_DIRS})
+target_link_libraries(makibusqt ${IBUSQT_LIBRARIES})
 
 # Apple frameworks
 target_link_libraries(makibusqt "-framework AppKit")
